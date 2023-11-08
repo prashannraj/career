@@ -9,11 +9,16 @@ const SignupSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
+  middleName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
   lastName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
+  contactNumber: Yup.number('').required('Required')
 });
 
 // export const ValidationSchemaExample = () => (
@@ -70,13 +75,14 @@ export default function Home() {
           priority
         />
       </div>
-      <div className='card'>
+      <div className={'card'}>
         <h1>
           Registration Page
         </h1>
-        </div>
-        <div>
-    <h1>Signup</h1>
+      </div>
+     <div className='registration'>
+        <h1>Signup First</h1>
+    <br></br>
     <Formik
       initialValues={{
         firstName: '',
@@ -93,25 +99,31 @@ export default function Home() {
     >
       {({ errors, touched }) => (
         <Form>
-          <Field name="firstName" />
+          <label for="fname">First name:<Field name="firstName" placeholder="First Name:"/></label>
           {errors.firstName && touched.firstName ? (
             <div>{errors.firstName}</div>
           ) : null}
-          <Field name="middleName" />
+          <br></br>
+          <label for="mname">Middle name:<Field name="middleName" placeholder="Midle Name:"/></label>
           {errors.middleName && touched.middleName ? (
             <div>{errors.middleName}</div>
           ) : null}
-          <Field name="lastName" />
+          <br></br>
+          <label for="lname">Last name:<Field name="lastName" placeholder="Last Name:" /></label>
           {errors.lastName && touched.lastName ? (
             <div>{errors.lastName}</div>
           ) : null}
-          <Field name="email" type="email" />
+          <br></br>
+          <label for="email">Email:</label><Field name="email" type="email" placeholder="vailed Email:"/>
           {errors.email && touched.email ? <div>{errors.email}</div> : null}
-          <Field name="contactNumber" />
+          <br></br>
+          <label for="contact">Contact Number:<Field name="contactNumber" placeholder="Contact Number:"/></label>
           {errors.contactNumber && touched.contactNumber ? (
             <div>{errors.contactNumber}</div>
           ) : null}
-          <button type="submit">Submit</button>
+          <br></br>
+          <br></br>
+          <button type="submit" className='button'>Submit</button>
         </Form>
       )}
     </Formik>

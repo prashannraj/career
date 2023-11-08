@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -29,6 +29,7 @@ body {
 }
 
 .registration {
+  background-color: blueviolet;
   font-weight: 400;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 10px;
@@ -50,6 +51,7 @@ body {
 
 .button{
   background-color: rgb(105, 105, 199);
+  border: 1px;
 }
 
 .card {
