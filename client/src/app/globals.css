@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --card-rgb: 100, 100, 100;
+  --card-border-rgb: 200, 200, 200;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.registration {
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 10px;
+  padding: 5px;
+}
+
+.navbar {
+  display: flex;
+  
+}
+.navitem {
+  margin: 10px;
+  padding: 5px;
+  background-color: blue;
+  border-radius: 3px; 
+  
+  
+}
+
+.button{
+  background-color: rgb(105, 105, 199);
+}
+
+.card {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 200ms, border 200ms;
+}
