@@ -7,9 +7,9 @@ const User=require('./model/user')
 
 connection()
 
-// app.get('/admin', (req, res) => {
-//   res.send('This is backend!')
-// })
+app.post('/register', async(req, res) => {
+  await User.create(req.body)
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

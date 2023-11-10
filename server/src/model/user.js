@@ -2,7 +2,8 @@ const mongoose=require('mongoose')
 const { Schema } = mongoose;
 
 const users = new Schema({
- firstname: String, // String is shorthand for {type: String}
+ firstname: String,
+ middlename: String, // String is shorthand for {type: String}
   lastname: String,
   email: String,
   address:String,
