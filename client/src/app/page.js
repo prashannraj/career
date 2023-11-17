@@ -15,7 +15,7 @@ const SignupSchema = Yup.object().shape({
 
 
 const NavBar = () =>{
-  const NavItem = [<a href="">Home</a>,<a href="">Vacancies</a>,<a href="">Gallery</a>,<a href="">Contact</a>]
+  const NavItem = [<a href="/">Home</a>,<a href="/register">Register</a>,<a href="">Gallery</a>,<a href="">Contact</a>]
   return(
    <div className='navbar'>
     {NavItem.map((item, id)=>{
@@ -65,7 +65,7 @@ export default function Home() {
         />
       </div>
       <div className='registration'>
-        <h1>Signup First</h1>
+        <h1>Login Here</h1>
     <br></br>
     <Formik
       initialValues={{
@@ -97,7 +97,7 @@ export default function Home() {
           <button type="submit" className='button'>Submit</button>
           <br />
           if you don"t have account
-          {/* <br /><Link href="./register">go to register</Link> */}
+          <br /><a href="/register" className='button'>register</a>
         </Form>
       )}
     </Formik>
