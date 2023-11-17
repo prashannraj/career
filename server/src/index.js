@@ -32,21 +32,21 @@ app.post('/register', async(req, res) => {
  })
 
 
-//  app.post('/login',async (req,res)=>{
- // check if phoneNumber exists
-  // const userDetails = await User.findOne({phoneNumber: req.body.phoneNumber})
-  // if(!userDetails){
-    // res.status(401).json({msg :'Invalid Credentials'})
-  // }else{
-    // const isMatched = await bcrypt.compare( req.body.password,userDetails.password )
-    // if(isMatched){
-      // res.json({msg :'Login Success'})
-    // }else{
-      // res.status(401).json({msg :'Incorrect password'})
-    // }
-  // }
+ app.post('/login',async (req,res)=>{
+ //check if phoneNumber exists
+  const userDetails = await User.findOne({phoneNumber: req.body.phoneNumber})
+  if(!userDetails){
+    res.status(401).json({msg :'User Not Found'})
+  }else{
+    const isMatched = await bcrypt.compare( req.body.password,userDetails.password )
+    if(isMatched){
+      res.json({msg :'Login Successfull'})
+    }else{
+      res.status(401).json({msg :'Incorrect password'})
+    }
+  }
 
-// })
+})
 
 
 app.listen(port, () => {
