@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const connection = require('./DB/connection')
 const app = express()
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 app.use(express.json())
 app.use(cors())
 const port = 4000
@@ -17,10 +19,10 @@ app.post('/register', async(req, res) => {
    if(userExists){
         res.status(409).json({msg :'Phone Number already taken!'})
    }else{
-     // generate a hash Password
-     //const hashPassword = await bcrypt.hash(req.body.password, saltRounds)
-     //req.body.password = hashPassword
-     // create new user with hash password
+     //generate a hash Password
+     const hashPassword = await bcrypt.hash(req.body.password, saltRounds)
+     req.body.password = hashPassword
+     //create new user with hash password
     const data=  await User.create(req.body)
    if(data) res.json({msg :'User registered. Please login'})
   }
