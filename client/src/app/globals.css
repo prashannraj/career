@@ -33,7 +33,15 @@ body {
   font-weight: 400;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 10px;
-  padding: 5px;
+  padding: 10px;
+  width: 250px;
+  border-radius: 13px;
+}
+.authForm{
+  background-color: rgb(163, 208, 208);
+  padding: 10px;
+  width: 200px;
+  border-radius: 13px;
 }
 
 .navbar {
@@ -52,6 +60,9 @@ body {
 .button{
   background-color: rgb(165, 233, 5);
   border: 1px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 65px;
 }
 
 .card {
@@ -61,3 +72,9 @@ body {
   border: 1px solid rgba(var(--card-border-rgb), 0);
   transition: background 200ms, border 200ms;
 }
+
+
+
+
+
+
