@@ -16,7 +16,7 @@ const SignupSchema = Yup.object().shape({
 
 
 const NavBar = () =>{
-  const NavItem = [<a href="/">Home</a>,<a href="/register">Register</a>,<a href="/login">Login</a>,<a href="">Contact</a>]
+  const NavItem = [<a href="/">Home</a>,<a href="/register">Register</a>,<a href="/login">Login</a>,<a href="/admin">Admin Login</a>]
   return(
    <div className='navbar'>
     {NavItem.map((item, id)=>{
