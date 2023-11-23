@@ -5,6 +5,15 @@ import { Formik, Form, Field } from 'formik';
 import {  message } from 'antd';
 import * as Yup from 'yup';
 
+const SignupSchema = Yup.object().shape({
+  // name: Yup.string()
+    // .min(2, 'Too Short!')
+    // .max(50, 'Too Long!')
+    // .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().required('Required')
+});
+
 
 const NavBar = () =>{
   const NavItem = [<a href="/">Home</a>,<a href="/register">Register</a>,<a href="/login">Login</a>,<a href="">Contact</a>]
@@ -22,7 +31,21 @@ const NavBar = () =>{
 }
 
 export default function Home() {
-  
+  const [messageApi, contextHolder] = message.useMessage();
+  const handleLogin = async(values) => {
+    const res = await fetch('http://localhost:4000/login', {
+        method:'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values)
+      })
+      const data = await res.json()
+        messageApi.open({
+          type: res.status == 200 ? 'success': 'error',
+          content: data.msg,
+        });
+      console.log(res)
+      }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -58,9 +81,42 @@ export default function Home() {
         />
       </div>
       <div className='registration'>
-        <h1>This is Home Page</h1>
+        <h1>Login Here</h1>
     <br></br>
-    
+    <Formik
+      initialValues={{
+        // name: '',
+        email: '',
+        password:''
+      }}
+      validationSchema={SignupSchema}
+      onSubmit={values => {
+        // same shape as initial values
+        console.log(values);
+      }}
+    >
+      {({ errors, touched }) => (
+        <Form >
+         
+         {/* <Field name="name" type="name" placeholder="Enter your Name" /> */}
+          {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
+          {/* <br /> */}
+          <br />
+          <Field name="email" type="email" placeholder="Enter your email" />
+          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+          <br />
+          <br />
+          <Field name="password" type="password" placeholder="Enter your password"/>
+          {errors.password && touched.password? <div>{errors.password}</div> : null}
+          <br />
+          <br />
+          <button type="submit" className='button'>Login</button>
+          <br />
+          if you don"t have account
+          <br /><a href="/register" className='button'>register</a>
+        </Form>
+      )}
+    </Formik>
   </div>
        
      
