@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import Image from 'next/image'
 import {  message } from 'antd';
 import Link from 'next/link';
+
+
 const SignupSchema = Yup.object().shape({
   phoneNumber: Yup.string()
     .min(2, 'Too Short!')
