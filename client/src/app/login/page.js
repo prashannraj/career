@@ -4,6 +4,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import {  message } from 'antd';
 import * as Yup from 'yup';
+import NavBar from '../component/NavBar/page';
 
 const SignupSchema = Yup.object().shape({
   // name: Yup.string()
@@ -15,20 +16,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 
-const NavBar = () =>{
-  const NavItem = [<a href="/">Home</a>,<a href="/register">Register</a>,<a href="/login">Login</a>,<a href="/admin">Admin Login</a>]
-  return(
-   <div className='navbar'>
-    {NavItem.map((item, id)=>{
-      return (<div className ='navitem'>{item}</div>)
-    }
-    
-    )
-    }
-
-   </div>
-  )
-}
 
 export default function Home() {
   const [messageApi, contextHolder] = message.useMessage();

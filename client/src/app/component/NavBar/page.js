@@ -1,14 +1,19 @@
 import React from 'react'
 
+const NavBar = (props) =>{
+  const NavItem = [<a href="/">Home</a>,<a href="/register">Register</a>,<a href="/login">Login</a>,<a href="/admin">Admin Login</a>]
+  return(
+   <div className='navbar'>
+    {NavItem.map((item, id)=>{
+      return (<div className ='navitem'>{item}</div>)
+    }
+    
+    )
+    }
 
-
-function page(props) {
-  return (
-    <div>
-        {props.name}
-    <button onClick={()=> props.setColor('pink')}>Change parent color</button>
-    </div>
+   </div>
   )
 }
 
-export default page
+
+export default NavBar

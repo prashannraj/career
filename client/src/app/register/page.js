@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import Image from 'next/image'
 import {  message } from 'antd';
 import Link from 'next/link';
+import NavBar from '../component/NavBar/page';
 
 
 
@@ -48,6 +49,8 @@ const SignupSchema = Yup.object().shape({
   
   return(
 <main className="flex min-h-screen flex-col items-center justify-between p-24"> 
+
+<NavBar/>
     <Image className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
         src="/logo.png"
         alt="Apply Online"
