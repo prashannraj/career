@@ -1,27 +1,26 @@
 'use client'
 import Image from 'next/image'
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import {  message } from 'antd';
-import * as Yup from 'yup';
+import React, {useState, useEffect} from 'react';
+import Card from '../app/component/Card/page'
+import Table from "../app/component/Table/page"
+import NavBar from './component/NavBar/page';
 
 
-const NavBar = () =>{
-  const NavItem = [<a href="/">Home</a>,<a href="/register">Register</a>,<a href="/login">Login</a>,<a href="">Contact</a>]
-  return(
-   <div className='navbar'>
-    {NavItem.map((item, id)=>{
-      return (<div className ='navitem'>{item}</div>)
-    }
-    
-    )
-    }
-
-   </div>
-  )
-}
 
 export default function Home() {
+  
+  const [vacancyList, setVacancyList] = useState([])
+  const fetchVacancies = async()=> {
+    const res = await fetch('http://localhost:4000/vacancies')
+    const data = await res.json()
+    setVacancyList(data.vacancyList)
+  }
+
+
+  useEffect(()=>{
+  fetchVacancies()
+  },[])
+
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -57,9 +56,15 @@ export default function Home() {
           priority
         />
       </div>
-      <div className='registration'>
-        <h1>This is Home Page</h1>
+      <div>
+        <h1>The Following vacancies has been published .</h1>
     <br></br>
+    {vacancyList.length> 0 && vacancyList.map((item,id)=>{
+            return (
+            //  <Card item={item}/>
+            <Table data={vacancyList}/>
+            )
+          }) }
     
   </div>
        

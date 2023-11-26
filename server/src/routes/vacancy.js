@@ -23,9 +23,9 @@ router.post('/vacancies', async(req, res) => {
   
 
    router.get('/vacancies',async(req,res)=>{
-    const data= await Product.find()
+    const data= await Vacancy.find()
     if(data){
-      res.json({productList: data})
+      res.json({vacancyList: data})
     }
    })
 
