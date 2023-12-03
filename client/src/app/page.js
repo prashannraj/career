@@ -59,14 +59,9 @@ export default function Home() {
       <div>
         <h1>The Following vacancies has been published .</h1>
     <br></br>
-    {vacancyList.length> 0 && vacancyList.map((item,id)=>{
-            return (
-            //  <Card item={item}/>
-            <Table data={vacancyList}/>
-            )
-          }) }
     
-  </div>
+    <Table data={vacancyList}/>
+      </div>
        
      
     </main>

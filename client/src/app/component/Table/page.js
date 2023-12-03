@@ -18,15 +18,38 @@ const columns = [
     key: 'level',
   },
   {
-    title: 'Exam Fee:',
-    dataIndex: 'examFee',
-    key: 'examFee',
-  },
-  {
     title: 'service:',
     key: 'service',
     dataIndex: 'service',
   },
+  {
+    title: 'vacancy Publish date:',
+    key: 'minPublishDate',
+    dataIndex: 'minPublishDate',
+  },
+  {
+    title: 'Exam Single Fee:',
+    key: 'examFeeSingle',
+    dataIndex: 'examFeeSingle',
+  },
+  {
+    title: 'Singly Payment date:',
+    key: 'sinPublishDate',
+    dataIndex: 'sinPublishDate',
+  },
+  {
+    title: 'Exam Double Fee:',
+    key: 'examFeeDouble',
+    dataIndex: 'examFeeDouble',
+  },
+   
+  {
+    title: 'Double Payment date:',
+    key: 'douPublishDate',
+    dataIndex: 'douPublishDate',
+  },
+  
+    
   {
     title: 'Apply Link:',
     key: 'apply',

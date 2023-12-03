@@ -6,7 +6,13 @@ const jobSchema = new mongoose.Schema({
   level: String,
   service: String,
   image: String,
-  examFee: String,
+  examFeeSingle: String,
+  examFeeDouble: String,
+  minPublishDate: String,
+  sinPublishDate: String,
+  douPublishDate: String,
+}, {
+  timestamps:true
 });
 const Vacancy = mongoose.model('Vacancy', jobSchema);
 module.exports = Vacancy
