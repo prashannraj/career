@@ -1,5 +1,6 @@
 const express=require('express')
 const router=express.Router()
+const jwt = require('jsonwebtoken');
 const User = require('../model/user')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -26,13 +27,14 @@ router.post('/register', async(req, res) => {
   
    router.post('/login',async (req,res)=>{
    //check if phoneNumber exists
-    const userDetails = await User.findOne({phoneNumber: req.body.phoneNumber})
+    const userDetails = await User.findOne({email: req.body.email})
     if(!userDetails){
       res.status(401).json({msg :'User Not Found'})
     }else{
       const isMatched = await bcrypt.compare( req.body.password,userDetails.password )
       if(isMatched){
-        res.json({msg :'Login Successfull'})
+        const token = jwt.sign({email: req.body.email}, process.env.SECRETE_KEY);
+        res.json({msg :'Login Successfull', token})
       }else{
         res.status(401).json({msg :'Incorrect password'})
       }

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const connection = async ()=>{
     try{
-        const connct = await mongoose.connect('mongodb://127.0.0.1:27017/careerdb');
+        const connct = await mongoose.connect(process.env.MONGOOSE);
         if(connct){
             console.log("connected to mongodb")
         }
