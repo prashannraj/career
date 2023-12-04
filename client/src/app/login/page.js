@@ -79,7 +79,7 @@ export default function Home() {
       validationSchema={SignupSchema}
       onSubmit={values => {
         // same shape as initial values
-        console.log(values);
+        handleLogin(values);
       }}
     >
       {({ errors, touched }) => (
