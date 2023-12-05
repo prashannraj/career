@@ -12,7 +12,7 @@ import { message } from 'antd';
 const SchedulePostForm = () => {
   const minPublishDate = dayjs().add(2, "day").format("YYYY-MM-DD");
   const sinPublishDate = dayjs().add(21, "day").format("YYYY-MM-DD");
-  const douPublishDate = dayjs().add(27, "day").format("YYY-MM-DD");
+  const douPublishDate = dayjs().add(27, "day").format("YYYY-MM-DD");
   const dateSchema = object({
     minPublishDate: date().min(minPublishDate, "Min date must be 2 days form today"),
     sinPublishDate: date().min(sinPublishDate, "Single date must be 21 days form today"),
@@ -120,7 +120,7 @@ export const index = () => {
               {errors.examFeeSingle && touched.examFeeSingle ? <div>{errors.examFeeSingle}</div> : null}
               <br />
               <br />
-              <Field name="examfeeDouble" type="text" placeholder="Enter Double Exam Fee" />
+              <Field name="examFeeDouble" type="text" placeholder="Enter Double Exam Fee" />
               {errors.examFeeDouble && touched.examFeeDouble ? <div>{errors.examFeeDouble}</div> : null}
               <br />
               <br />

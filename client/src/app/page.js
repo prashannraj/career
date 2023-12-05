@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React, {useState, useEffect} from 'react';
-import Card from '../app/component/Card/page'
+
 import Table from "../app/component/Table/page"
 import NavBar from './component/NavBar/page';
 

@@ -29,4 +29,12 @@ router.post('/vacancies', async(req, res) => {
     }
    })
 
+
+   router.get('/vacancies/:id',async(req,res)=>{
+    const data= await Vacancy.findById(req.params.id)
+    if(data){
+      res.json({vacancyList: data})
+    }
+   })
+
   module.exports=router;

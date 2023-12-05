@@ -13,12 +13,16 @@ import NavBar from '../component/NavBar/page';
 
 const BirthdayForm = () => {
   const eighteenYear = dayjs().subtract(18, "Year").format("YYYY-MM-DD");
-    const minage = object({
+  const minage = object({
     birthday: date().max(eighteenYear, "You must be at least 18 years old to register"),
-      })
+  })
 }
 
 const SignupSchema = Yup.object().shape({
+  fullName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
   phoneNumber: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -72,6 +76,7 @@ const index = () => {
         <h1>Kindly fill up following details for Sign up</h1>
         <Formik
           initialValues={{
+            fullName: '',
             phoneNumber: '',
             password: '',
             email: '',
@@ -86,11 +91,18 @@ const index = () => {
           {({ errors, touched }) => (
             <Form className='registration'>
               {contextHolder}
-              <Field name="phoneNumber" placeholder="phoneNumber" />
-              {errors.firstName && touched.firstName ? (
-                <div>{errors.firstName}</div>
+              <Field name="fullName" placeholder="Full Name:" />
+              {errors.fullName && touched.fullName ? (
+                <div>{errors.fullName}</div>
               ) : null}
               <br />
+
+              <Field name="phoneNumber" placeholder="phoneNumber" />
+              {errors.phoneNumber && touched.phoneNumber ? (
+                <div>{errors.phoneNumber}</div>
+              ) : null}
+              <br />
+
               <Field name="email" placeholder="email" />
               {errors.email && touched.email ? (
                 <div>{errors.email}</div>
@@ -101,12 +113,13 @@ const index = () => {
               <Field name="birthday" type="date" className="input input-bordered" />
               <br />
 
-              <Field name="address" type="address" placeholder="address" />
+              <Field name="address" type="address" placeholder="Address" />
               {errors.address && touched.address ? (
                 <div>{errors.address}</div>
               ) : null}
               <br />
-              <Field name="password" type="password" placeholder="password" />
+
+              <Field name="password" type="password" placeholder="Password" />
               {errors.password && touched.password ? (
                 <div>{errors.password}</div>
               ) : null}
@@ -114,7 +127,7 @@ const index = () => {
               <button type="submit" className='button'>Submit</button>
               <br />
               If you already registered ? <br />
-              <Link href="/" className='button'>Login</Link>
+              <Link href="/login" className='button'>Login</Link>
               <br />
             </Form>
           )}
