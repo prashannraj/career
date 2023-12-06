@@ -81,7 +81,8 @@ const index = () => {
             password: '',
             email: '',
             birthday: '',
-            address: ''
+            address: '',
+            role: ''
           }}
           validationSchema={SignupSchema}
           onSubmit={values => {
@@ -118,7 +119,15 @@ const index = () => {
                 <div>{errors.address}</div>
               ) : null}
               <br />
-
+              <Field component='select' name='role' id='roles' placeholder='Choose your role'>
+                <option disabled >Choose your role</option>
+                <option value="jobseeker">Jobseeker</option>
+                <option value="employer">Employer</option>
+              </Field>
+              {errors.role && touched.role ? (
+                <div className='errors'>{errors.role}</div>
+              ) : null}
+              <br />
               <Field name="password" type="password" placeholder="Password" />
               {errors.password && touched.password ? (
                 <div>{errors.password}</div>

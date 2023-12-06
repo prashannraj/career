@@ -83,7 +83,7 @@ export const index = () => {
               {errors.postName && touched.postName ? <div>{errors.postName}</div> : null}
               <br />
               <br />
-              <Field name="requiredQualification" type="text" placeholder="Enter about Required Qualification" />
+              <Field name="requiredQualification" type="textarea" placeholder="Enter about Required Qualification" />
               {errors.requiredQualification && touched.requiredQualification ? <div>{errors.requiredQualification}</div> : null}
               <br />
               <br />

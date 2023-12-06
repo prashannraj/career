@@ -2,16 +2,17 @@
 import Image from 'next/image'
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import {  message } from 'antd';
+import { message } from 'antd';
 import * as Yup from 'yup';
 import NavBar from '../component/NavBar/page';
 
 const SignupSchema = Yup.object().shape({
   // name: Yup.string()
-    // .min(2, 'Too Short!')
-    // .max(50, 'Too Long!')
-    // .required('Required'),
+  // .min(2, 'Too Short!')
+  // .max(50, 'Too Long!')
+  // .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
+  role: Yup.string().required('Required'),
   password: Yup.string().required('Required')
 });
 
@@ -19,25 +20,25 @@ const SignupSchema = Yup.object().shape({
 
 export default function Home() {
   const [messageApi, contextHolder] = message.useMessage();
-  const handleLogin = async(values) => {
+  const handleLogin = async (values) => {
     const res = await fetch('http://localhost:4000/login', {
-        method:'POST', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
-      })
-      const data = await res.json()
-        messageApi.open({
-          type: res.status == 200 ? 'success': 'error',
-          content: data.msg,
-        });
-      console.log(res)
-      }
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
+    })
+    const data = await res.json()
+    messageApi.open({
+      type: res.status == 200 ? 'success' : 'error',
+      content: data.msg,
+    });
+    console.log(res)
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-      <NavBar/>
-          <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+        <NavBar />
+        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
             href="#"
@@ -69,44 +70,52 @@ export default function Home() {
       </div>
       <div className='registration'>
         <h1>Login Here</h1>
-    <br></br>
-    <Formik
-      initialValues={{
-        // name: '',
-        email: '',
-        password:''
-      }}
-      validationSchema={SignupSchema}
-      onSubmit={values => {
-        // same shape as initial values
-        handleLogin(values);
-      }}
-    >
-      {({ errors, touched }) => (
-        <Form >
-        {contextHolder }
-         {/* <Field name="name" type="name" placeholder="Enter your Name" /> */}
-          {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
-          {/* <br /> */}
-          <br />
-          <Field name="email" type="email" placeholder="Enter your email" />
-          {errors.email && touched.email ? <div>{errors.email}</div> : null}
-          <br />
-          <br />
-          <Field name="password" type="password" placeholder="Enter your password"/>
-          {errors.password && touched.password? <div>{errors.password}</div> : null}
-          <br />
-          <br />
-          <button type="submit" className='button'>Login</button>
-          <br />
-          if you don"t have account
-          <br /><a href="/register" className='button'>register</a>
-        </Form>
-      )}
-    </Formik>
-  </div>
-       
-     
+        <br></br>
+        <Formik
+          initialValues={{
+            // name: '',
+            email: '',
+            role: '',
+            password: ''
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={values => {
+            // same shape as initial values
+            handleLogin(values);
+          }}
+        >
+          {({ errors, touched }) => (
+            <Form >
+              {contextHolder}
+              {/* <Field name="name" type="name" placeholder="Enter your Name" /> */}
+              {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
+              {/* <br /> */}
+              <br />
+              <Field name="email" type="email" placeholder="Enter your email" />
+              {errors.email && touched.email ? <div>{errors.email}</div> : null}
+              <br />
+              <br />
+              <Field component='select' name='role' id='roles' placeholder='Choose your role'>
+                <option disabled >Choose your role</option>
+                <option value="jobseeker">Jobseeker</option>
+                <option value="employer">Employer</option>
+              </Field>
+              {errors.role && touched.role ? <div>{errors.role}</div> : null}
+              <br/>
+              <Field name="password" type="password" placeholder="Enter your password" />
+              {errors.password && touched.password ? <div>{errors.password}</div> : null}
+              <br />
+              <br />
+              <button type="submit" className='button'>Login</button>
+              <br />
+              if you don"t have account
+              <br /><a href="/register" className='button'>register</a>
+            </Form>
+          )}
+        </Formik>
+      </div>
+
+
     </main>
   )
 }
