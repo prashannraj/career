@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 function page({params}) {
   const [vacancyDetail, setVacancyDetail] = useState({})
   const fetchVacancies = async () => {
-    const res = await fetch(`http://localhost:4000/vacanciess/${params.id}`)
+    const res = await fetch(`http://localhost:4000/vacancies/${params.id}`)
     const data = await res.json()
     setVacancyDetail(data.vacancyList)
   }
