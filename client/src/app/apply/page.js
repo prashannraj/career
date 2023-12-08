@@ -6,28 +6,94 @@ import * as Yup from 'yup';
 import { message } from 'antd';
 
 const applySchema = Yup.object().shape({
-    postName: Yup.string()
+    postName: {},
+    level: {},
+    service: {},
+    requiredQualification: {},
+    candidateFullName: {},
+    phoneNumber: {},
+    email: {},
+    fathersname: Yup.string()
         .min(2, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
-    level: Yup.number()
-        .min(0.2, 'Too low!')
-        .max(20, 'Too big!')
+    mothersName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
         .required('Required'),
-    service: Yup.string()
-        .min(5, 'Too short!')
-        .max(250, 'Too long!')
+    grandFatherName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
         .required('Required'),
-    requiredQualification: Yup.string()
-        .min(5, 'Too short!')
-        .max(250, 'Too long!')
+    permanentAddress:Yup.string ()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
         .required('Required'),
+    temporaryAddress: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    province: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    dateOfBirth:Yup.string ()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    citizenshipNumber: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    citizenshipIssueDistrict: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    dateOfissue: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    catogary: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    educationName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    educationevel: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    University: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    Grade: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    transcriptFile:Yup.string (),
+    charcterFile: Yup.string(),
+    trainingName: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    traninglevel: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    traningInstuate: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    traningCertificate: Yup.string(),
 });
 
 const Home = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const handleOrder = async (values) => {
-        const res = await fetch('http://localhost:4000/applied', {
+        const res = await fetch('http://localhost:4000/apply', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(values)
@@ -257,7 +323,7 @@ const Home = () => {
                         <div>{errors.instuate}</div>
                     ) : null}
                     <br /> <hr />
-                    
+
                     <Field name="traning" type="file" placeholder="upload your certificate" />
                     {errors.traning && touched.traning ? <div>{errors.traning}</div> : null}
                     <br /> <hr />
@@ -299,14 +365,36 @@ const Home = () => {
             <div>
                 <Formik
                     initialValues={{
-                        orderCateogry: '',
-                        productWeight: '',
-                        content: '',
-                        packagingType: '',
-                        hazardousMaterial: '',
-                        senderReferenceNumber: ''
+                        postName: '',
+                        level: '',
+                        service: '',
+                        requiredQualification: '',
+                        candidateFullName: '',
+                        phoneNumber: '',
+                        email: '',
+                        fathersName: '',
+                        mothersName: '',
+                        grandFatherName: '',
+                        permanentAddress: '',
+                        temporaryAddress: '',
+                        province: '',
+                        dateOfBirth:'' ,
+                        citizenshipNumber:'' ,
+                        citizenshipIssueDistrict: '',
+                        dateOfissue: '',
+                        catogary: '',
+                        educationName: '',
+                        educationevel: '',
+                        University: '',
+                        Grade: '',
+                        transcriptFile: '',
+                        charcterFile: '',
+                        trainingName: '',
+                        traninglevel: '',
+                        traningInstuate: '',
+                        traningCertificate: '',
                     }}
-                    // validationSchema={SignupSchema}
+                    // validationSchema={applySchema}
                     onSubmit={values => {
 
                         handleOrder(values);
