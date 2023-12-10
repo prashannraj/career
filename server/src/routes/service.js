@@ -1,45 +1,40 @@
 const express=require('express')
 const router=express.Router()
-const jwt = require('jsonwebtoken');
-const User = require('../model/user')
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const Service = require('../model/service')
+router.use(express.json());
 
-router.post('/register', async(req, res) => {
+
+
+router.post('/vacancies', async(req, res) => {
     try{
-     //check if user/email/phoneNumber doesnt already exist
-     const userExists = await User.findOne({phoneNumber: req.body.phoneNumber})
-     if(userExists){
-          res.status(409).json({msg :'Phone Number already taken!'})
+     //check if job's post name doesnt already exist
+     const jobsExists = await Vacancy.findOne({postName: req.body.postName})
+     if(jobsExists){
+          res.json({msg :'This post has been already in the list!'})
      }else{
-       //generate a hash Password
-       const hashPassword = await bcrypt.hash(req.body.password, saltRounds)
-       req.body.password = hashPassword
-       //create new user with hash password
-      const data=  await User.create(req.body)
-     if(data) res.json({msg :'User registered. Please login'})
+       //create new vacancy with post name
+      const data=  await Vacancy.create(req.body)
+     if(data) res.json({msg :'Post has been created'})
     }
     }catch(err){
      console.log(err)
     }
    })
   
-  
-   router.post('/login',async (req,res)=>{
-   //check if phoneNumber exists
-    const userDetails = await User.findOne({email: req.body.email})
-    if(!userDetails){
-      res.status(401).json({msg :'User Not Found'})
-    }else{
-      const isMatched = await bcrypt.compare( req.body.password,userDetails.password )
-      if(isMatched){
-        const token = jwt.sign({email: req.body.email}, process.env.SECRETE_KEY);
-        res.json({msg :'Login Successfull', token})
-      }else{
-        res.status(401).json({msg :'Incorrect password'})
-      }
+
+   router.get('/vacancies',async(req,res)=>{
+    const data= await Vacancy.find()
+    if(data){
+      res.json({vacancyList: data})
     }
-  
-  })
+   })
+
+
+   router.get('/vacancies/:id',async(req,res)=>{
+    const data= await Vacancy.findById(req.params.id)
+    if(data){
+      res.json({vacancyList: data})
+    }
+   })
 
   module.exports=router;
