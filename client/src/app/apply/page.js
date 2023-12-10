@@ -153,10 +153,8 @@ const Home = () => {
             <div>
                 <h1>Job Detail form</h1>
                 <p> Post Name:</p>
-                <Field name="postName" placeholder="Post Name:" />
-                {errors.postName && touched.postName ? (
-                    <div>{errors.postName}</div>
-                ) : null}
+                <Field name="postName" type="text" placeholder="Enter Post Name" />
+                {errors.postName && touched.postName ? <div>{errors.postName}</div> : null}
                 <br />
                 <hr />
                 <p>Level:</p>

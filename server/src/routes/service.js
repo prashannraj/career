@@ -5,16 +5,16 @@ router.use(express.json());
 
 
 
-router.post('/vacancies', async(req, res) => {
+router.post('/services', async(req, res) => {
     try{
-     //check if job's post name doesnt already exist
-     const jobsExists = await Vacancy.findOne({postName: req.body.postName})
-     if(jobsExists){
-          res.json({msg :'This post has been already in the list!'})
+     //check if service name doesnt already exist
+     const serviceExists = await Service.findOne({serviceName: req.body.serviceName})
+     if(serviceExists){
+          res.json({msg :'This service already in the list!'})
      }else{
-       //create new vacancy with post name
-      const data=  await Vacancy.create(req.body)
-     if(data) res.json({msg :'Post has been created'})
+       //create new service with name
+      const data=  await Service.create(req.body)
+     if(data) res.json({msg :'Service Name has been created'})
     }
     }catch(err){
      console.log(err)
@@ -22,19 +22,7 @@ router.post('/vacancies', async(req, res) => {
    })
   
 
-   router.get('/vacancies',async(req,res)=>{
-    const data= await Vacancy.find()
-    if(data){
-      res.json({vacancyList: data})
-    }
-   })
+            
 
-
-   router.get('/vacancies/:id',async(req,res)=>{
-    const data= await Vacancy.findById(req.params.id)
-    if(data){
-      res.json({vacancyList: data})
-    }
-   })
-
+            
   module.exports=router;
