@@ -34,7 +34,7 @@ router.post('/register', async(req, res) => {
       const isMatched = await bcrypt.compare( req.body.password,userDetails.password )
       if(isMatched){
         const token = jwt.sign({email: req.body.email}, process.env.SECRETE_KEY);
-        res.json({msg :'Login Successfull', token})
+        res.json({msg :'Login Successfull', token, userDetails})
       }else{
         res.status(401).json({msg :'Incorrect password'})
       }

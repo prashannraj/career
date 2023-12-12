@@ -1,3 +1,4 @@
+'use client'
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import userSlice from "./reducerSlice/userSlice";
@@ -20,8 +21,8 @@ const reducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, reducer)
 export const store = configureStore({
-  reducer: persistedReducer
- // middleware: [logger]
+  reducer: persistedReducer,
+  //middleware: [logger]
 })
 
 export const persistor = persistStore(store)

@@ -1,10 +1,12 @@
 'use client'
 import Image from 'next/image'
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { message } from 'antd';
 import * as Yup from 'yup';
 import NavBar from '../component/NavBar/page';
+import { setLoginDetails } from '../redux/reducerSlice/userSlice';
 
 const SignupSchema = Yup.object().shape({
   // name: Yup.string()
@@ -19,6 +21,7 @@ const SignupSchema = Yup.object().shape({
 
 
 export default function Home() {
+  const dispatch = useDispatch()
   const [messageApi, contextHolder] = message.useMessage();
   const handleLogin = async (values) => {
     const res = await fetch('http://localhost:4000/login', {
@@ -31,7 +34,9 @@ export default function Home() {
       type: res.status == 200 ? 'success' : 'error',
       content: data.msg,
     });
-    console.log(res)
+    if(res.status == 200){
+      dispatch(setLoginDetails(data.token, data.userDetails))
+    }
   }
 
   return (
