@@ -1,14 +1,14 @@
 'use client'
 import Image from 'next/image'
 import React, {useState, useEffect} from 'react';
-
+import ProgressBar from "@badrap/bar-of-progress";
 import Table from "../component/Table/page"
 import NavBar from '../component/NavBar/page';
 
 
 
 export default function Home() {
-  
+  const progress = new ProgressBar();
   const [vacancyList, setVacancyList] = useState([])
   const fetchVacancies = async()=> {
     const res = await fetch('http://localhost:4000/vacancies')
@@ -20,7 +20,10 @@ export default function Home() {
   useEffect(()=>{
   fetchVacancies()
   },[])
-
+  progress.start();
+  setTimeout(() => {
+    progress.finish();
+  }, 200);
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

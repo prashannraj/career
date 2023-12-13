@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React from 'react';
+import { useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { message } from 'antd';
@@ -22,6 +23,7 @@ const SignupSchema = Yup.object().shape({
 
 export default function Home() {
   const dispatch = useDispatch()
+  const router = useRouter()
   const [messageApi, contextHolder] = message.useMessage();
   const handleLogin = async (values) => {
     const res = await fetch('http://localhost:4000/login', {
@@ -34,8 +36,9 @@ export default function Home() {
       type: res.status == 200 ? 'success' : 'error',
       content: data.msg,
     });
-    if(res.status == 200){
+    if (res.status == 200) {
       dispatch(setLoginDetails(data.token, data.userDetails))
+      router.push('/candidate')
     }
   }
 
@@ -102,11 +105,12 @@ export default function Home() {
               <br />
               <Field component='select' name='role' id='roles' placeholder='Choose your role'>
                 <option disabled >Choose your role</option>
-                <option value="jobseeker">Jobseeker</option>
-                <option value="employer">Employer</option>
+                <option value="choose">choose</option>
+                <option value="candidate">Candidate</option>
+                <option value="officer">Officer</option>
               </Field>
               {errors.role && touched.role ? <div>{errors.role}</div> : null}
-              <br/>
+              <br />
               <Field name="password" type="password" placeholder="Enter your password" />
               {errors.password && touched.password ? <div>{errors.password}</div> : null}
               <br />
