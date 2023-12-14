@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const connection = async ()=>{
     try{
-        const connct = await mongoose.connect(process.env.MONGOOSE);
+        const connct = await mongoose.connect(process.env.MONGOOSE)
         if(connct){
             console.log("connected to mongodb")
         }

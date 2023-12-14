@@ -5,14 +5,14 @@ const initialState = {
   isLoggedIn: false,
 };
 
-const userSlice = createSlice({
-  name: "user",
+const applySlice = createSlice({
+  name: "apply",
   initialState,
   reducers: {
-    setLoginDetails: (state, actions) => {
+    setApplyDetails: (state, actions) => {
      return {
         ...state,
-        userDetails: actions.payload,
+        applyDetails: actions.payload,
         isLoggedIn: true
      }
     },
@@ -22,5 +22,5 @@ const userSlice = createSlice({
   }
 });
 
-export const { setLoginDetails, handleLogout } = userSlice.actions;
-export default userSlice.reducer;
+export const { setApplyDetails, handleLogout } = applySlice.actions;
+export default applySlice.reducer;

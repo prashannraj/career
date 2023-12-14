@@ -40,6 +40,7 @@ const SignupSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
+  role: Yup.string(),
 });
 
 
@@ -121,8 +122,9 @@ const index = () => {
               <br />
               <Field component='select' name='role' id='roles' placeholder='Choose your role'>
                 <option disabled >Choose your role</option>
-                <option value="jobseeker">Jobseeker</option>
-                <option value="employer">Employer</option>
+                <option value="choose">choose</option>
+                <option value="candidate">Candidate</option>
+                <option value="officer">Officer</option>
               </Field>
               {errors.role && touched.role ? (
                 <div className='errors'>{errors.role}</div>
