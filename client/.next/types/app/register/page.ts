@@ -1,4 +1,4 @@
-// File: F:\career\career\client\src\app\register\page.js
+// File: D:\recruitment\career\client\src\app\register\page.js
 import * as entry from '../../../../src/app/register/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
