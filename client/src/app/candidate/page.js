@@ -1,12 +1,24 @@
-import React from 'react'
+'use client'
+import { useState } from 'react'
+import '../styles/App.css'
+import Header from '../component/Header/page'
+import Sidebar from '../component/Sidebar/page'
+import Home from '../component/Home/page'
 
+function App() {
+  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
 
-function page() {
+  const OpenSidebar = () => {
+    setOpenSidebarToggle(!openSidebarToggle)
+  }
+
   return (
-    <div>
-      This is candidate dashboard
+    <div className='grid-container'>
+      <Header OpenSidebar={OpenSidebar}/>
+      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
+      <Home />
     </div>
   )
 }
 
-export default page
+export default App
