@@ -1,7 +1,5 @@
 {
-  "/admin/users/page": "app/admin/users/page.js",
+  "/page": "app/page.js",
   "/admin/page": "app/admin/page.js",
-  "/quatas/page": "app/quatas/page.js",
-  "/universities/page": "app/universities/page.js",
-  "/qualification/page": "app/qualification/page.js"
+  "/admin/users/page": "app/admin/users/page.js"
 }

@@ -1,6 +1,7 @@
 'use client'
 import React, {useState, useEffect} from "react";
 import Table from '../../../app/component/Table/page';
+import { Formik, Form, Field } from 'formik';
 import { message, Modal } from 'antd';
 
 
@@ -53,7 +54,8 @@ const App=()=>{
           content: data.msg,
         });
         if (res.status === 200) {
-          userFetch()
+          userFetch(),
+          resetForm()
         }
       };
 
