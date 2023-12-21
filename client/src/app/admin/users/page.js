@@ -40,8 +40,8 @@ const App=()=>{
         }
       };
     
-      const editUser = async (item) => {
-        setEditFields(item)
+      const editUser = async (values) => {
+        setEditFields(values)
          setOpen(true)
         const res = await fetch('http://localhost:4000/users', {
           method: 'PUT',
@@ -54,8 +54,7 @@ const App=()=>{
           content: data.msg,
         });
         if (res.status === 200) {
-          userFetch(),
-          resetForm()
+          userFetch()
         }
       };
 
