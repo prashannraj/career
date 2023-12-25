@@ -1,8 +1,11 @@
 'use client'
 import React, {useState, useEffect} from "react";
+
 import Table from '../../../app/component/Table/page';
 import { Formik, Form, Field } from 'formik';
 import { message, Modal } from 'antd';
+
+
 
 
 const App=()=>{
@@ -40,10 +43,15 @@ const App=()=>{
         }
       };
     
-      const editUser = async (item) => {
-        setEditFields(item)
+      const editUser = async (values) => {
+        setEditFields(values)
          setOpen(true)
-        const res = await fetch('http://localhost:4000/users', {
+    
+      };
+    
+    
+      const submitEditUser=async(values)=>{
+            const res = await fetch('http://localhost:4000/users', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(values)
@@ -54,33 +62,50 @@ const App=()=>{
           content: data.msg,
         });
         if (res.status === 200) {
-          userFetch(),
-          resetForm()
+          userFetch()
+          setOpen(false)
         }
-      };
+    
+      }
+    
 
     return(
         <div>
             {contextHolder}
-            <Modal title="Edit User" open={open} onCancel={()=> setOpen(false)}>
+            <Modal title="Edit User" open={open} footer={null} onCancel={()=> setOpen(false)}>
           <Formik
-        initialValues={editFields}
+         initialValues={{fullName:'', ...editFields}}
         enableReinitialize
         // validationSchema={SignupSchema}
         onSubmit={(values,{ resetForm }) => {
-       
+          submitEditUser(),
+          resetForm()
         }}
       >
         {({ errors, touched }) => (
-          <Form className='editForm'> 
-              <Field name="fullName"/>
-              <Field name="email"/>
-              <Field name="address"/>
-              <Field name="phoneNumber"/>
-              <Field name="birthday"/>
-              
+          <Form className='registration'> 
+          <div>
+           <label>Full Name name:</label>
+          <Field name="fullName" placeholder="Full Name:" />
+          </div>
+          <div>
+           <label>Email:</label>
+          <Field name="email" placeholder="Email:" />
+          </div><div>
+           <label>Address:</label>
+          <Field name="address" placeholder="Address:" />
+          </div><div>
+           <label>Phone Number:</label>
+          <Field name="phoneNumber" placeholder="Phone Number" />
+          </div><div>
+          <label for="birthday">Select Date of Birth:</label>
+          <Field name="birthday" type="date" className="input input-bordered" />
+              <br />
+          </div>
+          <button type= 'submit' className='button'>save</button>
             </Form>
         )}
+           
             </Formik>
             </Modal>
             <Table

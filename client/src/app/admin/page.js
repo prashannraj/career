@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import '../styles/Admin.css'
+import style from '../styles/Admin.css'
 import Header from '../component/Header/admin'
 import Sidebar from '../component/Sidebar/admin'
 import Home from '../component/Home/admin'

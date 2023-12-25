@@ -1,10 +1,13 @@
 'use client'
 import Image from 'next/image'
 import React from 'react';
+import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import {  message } from 'antd';
 import * as Yup from 'yup';
 import NavBar from '../component/NavBar/page';
+import { setLoginDetails } from '../redux/reducerSlice/userSlice';
 
 
 const SignupSchema = Yup.object().shape({
@@ -17,7 +20,10 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default function Home() {
+  const dispatch = useDispatch()
+  const router = useRouter()
   const [messageApi, contextHolder] = message.useMessage();
+ 
   const handleLogin = async(values) => {
     const res = await fetch('http://localhost:4000/login', {
         method:'POST', 
@@ -29,8 +35,11 @@ export default function Home() {
           type: res.status == 200 ? 'success': 'error',
           content: data.msg,
         });
-      console.log(res)
-      }
+        if (res.status == 200) {
+            dispatch(setLoginDetails(data.token, data.userDetails))
+            router.push('/admindashboard.js')
+          }
+        }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -78,12 +87,12 @@ export default function Home() {
       validationSchema={SignupSchema}
       onSubmit={values => {
         // same shape as initial values
-        console.log(values);
+        handleLogin(values);
       }}
     >
       {({ errors, touched }) => (
         <Form >
-         
+          {contextHolder}
          {/* <Field name="name" type="name" placeholder="Enter your Name" /> */}
           {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
           {/* <br /> */}

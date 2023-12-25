@@ -63,8 +63,7 @@ export default function Home() {
         <h1>The Following vacancies has been published .</h1>
     <br></br>
     
-              
-            <Table data={vacancyList}/>
+    <Table data={vacancyList}/>
      
     {/* <Table list={vacancyList} title={['postName','level', 'service', 'minPublishDate', 'sinPublishDate', 'douPublishDate', 'examFeeSingle', 'examFeeDouble']} endpoint="/vacancies" /> */}
     
