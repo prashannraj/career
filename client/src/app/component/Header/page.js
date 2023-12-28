@@ -14,9 +14,9 @@ function Header({OpenSidebar}) {
             <BsSearch  className='icon'/>
         </div>
         <div className='header-right'>
-            <BsFillBellFill className='icon'/>
-            <BsFillEnvelopeFill className='icon'/>
-            <BsPersonCircle className='icon'/>
+           <a href=''> <BsFillBellFill className='icon'/></a>
+           <a href=''> <BsFillEnvelopeFill className='icon'/></a>
+           <a href=''> <BsPersonCircle className='icon'/></a>
         </div>
     </header>
   )

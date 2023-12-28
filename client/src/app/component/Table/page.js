@@ -10,7 +10,11 @@ const App = (props) => {
       {props?.title?.map((item) => {
         return <Column title={item} dataIndex={item} key={item} />
       })}
-
+<Column
+      title="Index"
+      key="index"
+      render={(value, item, index) =>  index +1}
+    />
       <Column
         title="Action"
         key="action"

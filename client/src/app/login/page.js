@@ -15,7 +15,7 @@ const SignupSchema = Yup.object().shape({
   // .max(50, 'Too Long!')
   // .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  role: Yup.string().required('Required'),
+  role: Yup.string(),
   password: Yup.string().required('Required')
 });
 
@@ -102,14 +102,6 @@ export default function Home() {
               <Field name="email" type="email" placeholder="Enter your email" />
               {errors.email && touched.email ? <div>{errors.email}</div> : null}
               <br />
-              <br />
-              <Field component='select' name='role' id='roles' placeholder='Choose your role'>
-                <option disabled >Choose your role</option>
-                <option value="choose">choose</option>
-                <option value="candidate">Candidate</option>
-                <option value="officer">Officer</option>
-              </Field>
-              {errors.role && touched.role ? <div>{errors.role}</div> : null}
               <br />
               <Field name="password" type="password" placeholder="Enter your password" />
               {errors.password && touched.password ? <div>{errors.password}</div> : null}

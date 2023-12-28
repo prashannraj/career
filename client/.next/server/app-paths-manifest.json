@@ -1,1 +1,8 @@
-{}
+{
+  "/page": "app/page.js",
+  "/admin/users/page": "app/admin/users/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/vacancies/page": "app/admin/vacancies/page.js",
+  "/universities/page": "app/universities/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+}

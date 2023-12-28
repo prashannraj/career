@@ -78,7 +78,7 @@ const App=()=>{
         enableReinitialize
         // validationSchema={SignupSchema}
         onSubmit={(values,{ resetForm }) => {
-          submitEditUser(),
+          submitEditUser();
           resetForm()
         }}
       >
