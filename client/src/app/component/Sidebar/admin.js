@@ -27,7 +27,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/universities">
+                    <a href="./admin/universities">
                         <BsFillGrid3X3GapFill className='icon' /> UNIVERSITY MANAGEMENT
                     </a>
                 </li>

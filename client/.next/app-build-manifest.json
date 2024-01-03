@@ -11,26 +11,16 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/admin/users/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/users/page.js"
-    ],
     "/admin/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/admin/page.css",
       "static/chunks/app/admin/page.js"
     ],
-    "/admin/vacancies/page": [
+    "/admin/universities/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/admin/vacancies/page.js"
-    ],
-    "/universities/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/universities/page.js"
+      "static/chunks/app/admin/universities/page.js"
     ]
   }
 }

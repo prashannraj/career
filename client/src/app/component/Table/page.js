@@ -7,14 +7,14 @@ const App = (props) => {
 
   return (
     <Table dataSource={props.list}>
-      {props?.title?.map((item) => {
-        return <Column title={item} dataIndex={item} key={item} />
-      })}
-<Column
+      <Column
       title="Index"
       key="index"
       render={(value, item, index) =>  index +1}
     />
+      {props?.title?.map((item) => {
+        return <Column title={item} dataIndex={item} key={item} />
+      })}
       <Column
         title="Action"
         key="action"
