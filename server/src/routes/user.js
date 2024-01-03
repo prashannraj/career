@@ -1,6 +1,7 @@
 const express=require('express')
 const router=express.Router()
 const {registerNewUser, logInUser, getAllUsers, updateUserDetails, changePassword, editUser, deleteUser } =require('../controller/user')
+router.use(express.json());
 
 
 
