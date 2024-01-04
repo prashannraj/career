@@ -5,6 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { message, Modal } from 'antd';
 import Table from '../../component/Table/page';
+import styles from '../../styles/fields.module.css';
 
 const gridStyle = {
   width: '10%',
@@ -123,7 +124,7 @@ const handleCancel = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className='editForm'>
+          <Form className={styles.editForm}>
             <div>
               <label>University Name:</label>
               <Field name="universityName" placeholder="universityName" />
@@ -133,7 +134,7 @@ const handleCancel = () => {
             </div>
 
             <br />
-            <button type="submit">Submit</button>
+            <button className={styles.submitBtn} type="submit">Submit</button>
           </Form>
         )}
       </Formik>
@@ -143,10 +144,11 @@ const handleCancel = () => {
 
 
   return (
- 
-<div className='form'>
-  <h3>Add new University:</h3>
-  <Formik
+    <>
+<div className={styles.container}>
+<div className={styles.Box}>
+<h3 style={{fontSize:'30px',fontWeight:'bold',textAlign:'center'}}>Add new University</h3>
+    <Formik
     initialValues={{
       universityName: ''
         }}
@@ -159,10 +161,10 @@ const handleCancel = () => {
       <Form className='addCategoryForm'>
           <div className='formDiv'>
         {contextHolder}
-        <Field name="universityName" type="text" placeholder="Enter your  University Name" />
+        <Field name="universityName" type="text" placeholder="Enter New University Name" />
         {errors.universityName && touched.universityName ? <div>{errors.universityName}</div> : null}
         <br />
-        <button className='submitBtn' type="submit">Submit</button>
+        <button className='button' type="submit">Submit</button>
         </div>
       </Form>
     )}
@@ -180,7 +182,9 @@ const handleCancel = () => {
         list={universityList} title={['universityName']} endpoint="/universities" />
 
       </div>
+      </div>
+      </>
   )
-}
+};
 
 export default index 

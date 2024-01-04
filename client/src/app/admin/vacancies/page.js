@@ -66,7 +66,6 @@ export const index = () => {
             minPublishDate: '',
             sinPublishDate: '',
             douPublishDate: '',
-            image: '',
             examFeeSingle: '',
             examFeeDouble: ''
           }}

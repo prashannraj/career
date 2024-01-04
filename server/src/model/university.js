@@ -7,4 +7,4 @@ const universitySchema = new mongoose.Schema({
   timestamps:true
 });
 const University = mongoose.model('university', universitySchema);
-module.exports = University
+module.exports = University;

@@ -1,0 +1,81 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./src/app/styles/fields.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.fields_container__3VW24 {
+    background-image: linear-gradient(#4cb6eb,#7db8d6);
+    min-height: 84.5vh;
+    max-height: -moz-max-content;
+    max-height: max-content;
+    width: 100vw;
+}
+.fields_Box__kde5D{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    min-height: 88vh;
+    max-height: -moz-max-content;
+    max-height: max-content;
+    gap: 15px;
+}
+.fields_addCategoryForm__kglcC {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 450px;
+    margin-top: 15px;
+}
+
+.fields_formDiv__X8TMH {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 25px;
+}
+
+.fields_formDiv__X8TMH input {
+    width: 300px;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.fields_editForm__yO4rv {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 0px;
+
+}
+
+.fields_editForm__yO4rv label {
+    display: inline-block;
+    width: 140px;
+    font-size: 0.8rem;
+}
+
+.fields_editForm__yO4rv input {
+    border: 2px solid black;
+    padding: 4px;
+}
+
+.fields_submitBtn__qOkyW {
+    width: 300px;
+    background-color: #1677ff;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.fields_icons__uRLW3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+}
+
+.fields_icons__uRLW3 p {
+    cursor: pointer;
+}

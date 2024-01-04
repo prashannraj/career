@@ -1,9 +1,8 @@
 {
-  "/register/page": "app/register/page.js",
   "/admin/page": "app/admin/page.js",
-  "/login/page": "app/login/page.js",
-  "/admin/users/page": "app/admin/users/page.js",
-  "/page": "app/page.js",
+  "/admin/universities/page": "app/admin/universities/page.js",
+  "/admin/quatas/page": "app/admin/quatas/page.js",
   "/admin/vacancies/page": "app/admin/vacancies/page.js",
-  "/admin/universities/page": "app/admin/universities/page.js"
+  "/admin/levels/page": "app/admin/levels/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

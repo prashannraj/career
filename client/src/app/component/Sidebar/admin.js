@@ -32,27 +32,27 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/quatas">
+                    <a href="./admin/quatas">
                         <BsPeopleFill className='icon' /> QUATA MANAGEMENT
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/levels">
+                    <a href="./admin/levels">
                         <BsListCheck className='icon' /> LEVEL MANAGEMENT
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/posts">
+                    <a href="./admin/posts">
                         <BsListCheck className='icon' /> POST MANAGEMENT
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/qualification">
+                    <a href="./admin/qualifications">
                         <BsListCheck className='icon' /> QUALIFICATION MANAGEMENT
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/services">
+                    <a href="./admin/services">
                         <BsListCheck className='icon' /> SERVICE MANAGEMENT
                     </a>
                 </li>
