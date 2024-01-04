@@ -8,8 +8,8 @@ const userSchema = new mongoose.Schema({
   address: String,
   role: {
     type:String,
-    enum:['choose','candidate', 'officer'],
-    default:'choose'
+   enum:['candidate','officer', 'admin'],
+   default:'candidate'
   },
   password: String
 });

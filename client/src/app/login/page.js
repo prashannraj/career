@@ -6,16 +6,13 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { message } from 'antd';
 import * as Yup from 'yup';
+import Link from 'next/link';
 import NavBar from '../component/NavBar/page';
 import { setLoginDetails } from '../redux/reducerSlice/userSlice';
+//import MainLayout from '../component/MainLayout/page';
 
 const SignupSchema = Yup.object().shape({
-  // name: Yup.string()
-  // .min(2, 'Too Short!')
-  // .max(50, 'Too Long!')
-  // .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  role: Yup.string(),
   password: Yup.string().required('Required')
 });
 
@@ -76,14 +73,15 @@ export default function Home() {
           priority
         />
       </div>
+     
+      {contextHolder}
       <div className='registration'>
         <h1>Login Here</h1>
         <br></br>
         <Formik
           initialValues={{
-            // name: '',
+           
             email: '',
-            role: '',
             password: ''
           }}
           validationSchema={SignupSchema}
@@ -94,12 +92,7 @@ export default function Home() {
         >
           {({ errors, touched }) => (
             <Form >
-              {contextHolder}
-              {/* <Field name="name" type="name" placeholder="Enter your Name" /> */}
-              {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
-              {/* <br /> */}
-              <br />
-              <Field name="email" type="email" placeholder="Enter your email" />
+             <Field name="email" type="email" placeholder="Enter your email" />
               {errors.email && touched.email ? <div>{errors.email}</div> : null}
               <br />
               <br />
@@ -115,6 +108,7 @@ export default function Home() {
           )}
         </Formik>
       </div>
+     
 
 
     </main>
