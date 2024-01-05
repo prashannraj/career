@@ -44,6 +44,13 @@ body {
   border-radius: 13px;
 }
 
+.heading{
+  text-align: center;
+  margin-top: 150px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .navbar {
   display: flex;
   

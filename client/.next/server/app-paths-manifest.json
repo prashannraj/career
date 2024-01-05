@@ -1,8 +1,7 @@
 {
+  "/page": "app/page.js",
   "/admin/page": "app/admin/page.js",
-  "/admin/universities/page": "app/admin/universities/page.js",
-  "/admin/quatas/page": "app/admin/quatas/page.js",
-  "/admin/vacancies/page": "app/admin/vacancies/page.js",
-  "/admin/levels/page": "app/admin/levels/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/officer/page": "app/officer/page.js",
+  "/officer/requision/page": "app/officer/requision/page.js",
+  "/admin/vacancies/page": "app/admin/vacancies/page.js"
 }

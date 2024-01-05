@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react'
 import '../styles/App.css'
-import Header from '../component/Header/page'
-import Sidebar from '../component/Sidebar/page'
-import Home from '../component/Home/page'
+import Header from '../component/Header/officer'
+import Sidebar from '../component/Sidebar/officer'
+import Home from '../component/Home/officer'
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
