@@ -57,7 +57,7 @@ const handleCancel = () => {
     universityFetch()
   }, [])
 
-  const registerUniversity = async (values, resetForm) => {
+  const createUniversity = async (values, resetForm) => {
     const res = await fetch(`http://localhost:4000/universities`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -89,12 +89,16 @@ const handleCancel = () => {
     console.log(res)
     if (res.status === 200) {
       universityFetch();
-      setIsModalOpen2(false);
+      showModal2 (false);
     }
   };
 
+  const editUniversity = async (values) => {
+    setSelectedEditUniversity(values)
+    showModal1(false)
+  };
 
-  const editUniversity = async (values,resetForm) => {
+  const submitUniversity = async (values) => {
     const res = await fetch(`http://localhost:4000/universities`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -108,7 +112,7 @@ const handleCancel = () => {
     if (res.status === 200) {
       universityFetch();
       handleCancel();
-      resetForm()
+      resetForm();
     }
   };
 
@@ -120,7 +124,7 @@ const handleCancel = () => {
         enableReinitialize
         // validationSchema={SignupSchema}
         onSubmit={(values,{ resetForm }) => {
-          editUniversity(values,resetForm)
+          submitUniversity(values, resetForm)
         }}
       >
         {({ errors, touched }) => (
@@ -154,7 +158,7 @@ const handleCancel = () => {
         }}
     // validationSchema={SignupSchema}
     onSubmit={(values,{resetForm}) => {
-      registerUniversity(values,resetForm);
+      createUniversity(values,resetForm);
     }}
   >
     {({ errors, touched }) => (
